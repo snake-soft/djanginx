@@ -1,0 +1,36 @@
+upstream site {
+    server ${SITE_HOSTNAME}:${SITE_PORT};
+}
+
+server {
+    return 444;
+}
+
+server {
+    listen 80;
+    server_name ${LISTEN_DOMAIN};
+
+    location /${DJANGO_STATIC_URL}/ {
+        autoindex on;
+        alias /app/${DJANGO_STATIC_ROOT_DIR}/;
+        expires 1y;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    location /${DJANGO_MEDIA_URL}/ {
+        autoindex on;
+        alias /app/${DJANGO_MEDIA_DIR}/;
+        expires 1y;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    location / {
+        proxy_pass http://site;
+    }
+    add_header       X-Served-By $host;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Scheme $scheme;
+    proxy_set_header X-Forwarded-Proto  $scheme;
+    proxy_set_header X-Forwarded-For    $proxy_add_x_forwarded_for;
+    proxy_set_header X-Real-IP          $remote_addr;
+}
