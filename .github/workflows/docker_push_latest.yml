@@ -35,7 +35,7 @@ jobs:
           context: .
           push: true
           build-args: 
-            VERSION=$VERSION
-            HASH=$HASH
+            VERSION=${{ VERSION }}
+            HASH=${{ HASH }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: snakesoft/djanginx:latest
