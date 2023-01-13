@@ -35,6 +35,6 @@ jobs:
             VERSION=${{ github.GITHUB_REF_NAME }}
             HASH=${{ github.GITHUB_SHA }}
           tags: |
-            snakesoft/djanginx:${ github.GITHUB_REF_NAME }
-            snakesoft/djanginx:${ github.GITHUB_REF_NAME%.* }
-            snakesoft/djanginx:${ github.GITHUB_REF_NAME%%.* }
+            snakesoft/djanginx:${github.GITHUB_REF_NAME}
+            snakesoft/djanginx:${github.GITHUB_REF_NAME%.*}
+            snakesoft/djanginx:${github.GITHUB_REF_NAME%%.*}
