@@ -36,9 +36,9 @@ jobs:
           push: true
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            VERSION=${GITHUB_REF}
-            HASH=${GITHUB_SHA}
+            VERSION=${{ GITHUB_REF }}
+            HASH=${{ GITHUB_SHA }}
           tags: |
-            snakesoft/djanginx:$MAJOR
-            snakesoft/djanginx:$MINOR
-            snakesoft/djanginx:$MICRO
+            snakesoft/djanginx:${{ MAJOR }}
+            snakesoft/djanginx:${{ MINOR }}
+            snakesoft/djanginx:${{ MICRO }}
