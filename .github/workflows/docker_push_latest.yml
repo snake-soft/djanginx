@@ -28,7 +28,7 @@ jobs:
 
       - name: Foo
         env:
-          HASH: ${GITHUB_SHA}
+          HASH: echo "${GITHUB_SHA}"
         run: echo $HASH
 
 
