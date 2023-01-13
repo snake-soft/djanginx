@@ -32,9 +32,9 @@ jobs:
           push: true
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            VERSION=${{ GITHUB_REF_NAME }}
-            HASH=${{ GITHUB_SHA }}
+            VERSION=${{ github.GITHUB_REF_NAME }}
+            HASH=${{ github.GITHUB_SHA }}
           tags: |
-            snakesoft/djanginx:${{ GITHUB_REF_NAME }}
-            snakesoft/djanginx:${{ GITHUB_REF_NAME%.* }}
-            snakesoft/djanginx:${{ GITHUB_REF_NAME%%.* }}
+            snakesoft/djanginx:${{ github.GITHUB_REF_NAME }}
+            snakesoft/djanginx:${{ github.GITHUB_REF_NAME%.* }}
+            snakesoft/djanginx:${{ github.GITHUB_REF_NAME%%.* }}
