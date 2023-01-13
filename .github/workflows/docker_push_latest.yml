@@ -26,11 +26,17 @@ jobs:
         with:
           images: snakesoft/djanginx
 
+      - name: Foo
+        env:
+          HASH: ${GITHUB_SHA}
+        run: echo $HASH
+
+
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         env:
           VERSION: latest
-          HASH: ${{ github.GITHUB_SHA }}
+          HASH: `echo ${GITHUB_SHA}`
         with:
           context: .
           push: true
