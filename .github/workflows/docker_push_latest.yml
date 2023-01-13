@@ -44,4 +44,4 @@ jobs:
             VERSION=${{ env.VERSION }}
             HASH=${{ env.HASH }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: snakesoft/djanginx:`${{ env.HASH }}`
+          tags: echo "snakesoft/djanginx:${{ env.HASH }}"
