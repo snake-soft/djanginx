@@ -26,17 +26,11 @@ jobs:
         with:
           images: snakesoft/djanginx
 
-      - name: "Say Hello Mona it's Monday"
-        env:
-          VERSION: echo "${GITHUB_REF}"
-          HASH: echo "${GITHUB_SHA}"
-        run: echo "Build and push $env.VERSION from ${{ env.HASH }}"
-
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         env:
-          VERSION: ${{ github.GITHUB_REF }}
-          HASH: ${{ github.GITHUB_SHA }}
+          VERSION: echo "${GITHUB_REF}"
+          HASH: echo "${GITHUB_SHA}"
         with:
           context: .
           push: true
