@@ -28,8 +28,8 @@ jobs:
 
       - name: Foo
         env:
-          HASH: echo "${GITHUB_SHA}"
-        run: echo "${GITHUB_SHA}"
+          HASH: ${GITHUB_SHA:0:5}
+        run: echo "${GITHUB_SHA:0:5} blablubb $HASH / ${{ env.HASH }}"
 
 
       - name: Build and push Docker image
