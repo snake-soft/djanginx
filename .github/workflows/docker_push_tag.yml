@@ -9,11 +9,6 @@ jobs:
   push_version:
     name: Push version tag Docker image to Docker Hub
     runs-on: ubuntu-latest
-    env:
-      MAJOR: echo "${github.GITHUB_REF_NAME%%.*}"
-      MINOR: echo "${github.GITHUB_REF_NAME%.*}"
-      MICRO: echo "${github.GITHUB_REF_NAME}"
-
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -31,8 +26,13 @@ jobs:
           images: snakesoft/djanginx
 
       - name: Set Major
-        id: MAJOR
-        run: echo ""
+        run: echo MAJOR=${github.GITHUB_REF_NAME%%.*} >> $GITHUB_ENV
+
+      - name: Set Major
+        run: echo MAJOR=${github.GITHUB_REF_NAME%.*} >> $GITHUB_ENV
+
+      - name: Set Micro
+        run: echo MICRO=${github.GITHUB_REF_NAME} >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
