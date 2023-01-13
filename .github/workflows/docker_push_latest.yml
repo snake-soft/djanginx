@@ -26,11 +26,17 @@ jobs:
         with:
           images: snakesoft/djanginx
 
-      - name: Foo
+      - name: Foo1
+        run: echo "${github.GITHUB_SHA}"
+
+      - name: Foo2
+        run: echo "${{ github.GITHUB_SHA }}"
+
+      - name: Bar
         env:
           VERSION: echo "${{ env.GITHUB_REF_NAME }}"
-          HASH: ${ GITHUB_SHA }
-        run: echo "1: ${{ env.GITHUB_REF_NAME }} 2: ${ env.GITHUB_REF_NAME } 3: ${{ github.GITHUB_REF_NAME }}.  Create $VERSION from ${{ env.HASH }}"
+          HASH: ${GITHUB_SHA}
+        run: echo " Create $VERSION from ${{ env.HASH }} ($HASH)"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
