@@ -3,10 +3,10 @@ FROM nginx:1.23.3
 COPY ./nginx/templates/default.conf.template /etc/nginx/templates/
 
 ARG HASH="Unknown"
-RUN echo "${HASH}" > /app/HASH
+RUN echo "${HASH}" > /HASH
 
 ARG VERSION=0.0.0
-RUN echo "${VERSION}" > /app/VERSION
+RUN echo "${VERSION}" > /VERSION
 
 ENV LISTEN_DOMAIN="_"
 ENV DJANGO_STATIC_URL="static"
