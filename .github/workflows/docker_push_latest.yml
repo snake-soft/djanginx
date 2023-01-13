@@ -41,4 +41,4 @@ jobs:
             VERSION=latest
             HASH=${{ env.GITHUB_SHA }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: echo "snakesoft/djanginx:${{ GITHUB_SHA }}"
+          tags: echo "snakesoft/djanginx:${{ github.GITHUB_SHA }}"
