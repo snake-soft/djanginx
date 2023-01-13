@@ -28,9 +28,9 @@ jobs:
 
       - name: Foo
         env:
-          VERSION: echo "${{ GITHUB_REF }}"
+          VERSION: echo "${{ env.GITHUB_REF_NAME }}"
           HASH: ${ GITHUB_SHA }
-        run: echo "Create $VERSION from ${{ env.HASH }}"
+        run: echo "1: ${{ env.GITHUB_REF_NAME }} 2: ${ env.GITHUB_REF_NAME } 3: ${{ github.GITHUB_REF_NAME }}.  Create $VERSION from ${{ env.HASH }}"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
