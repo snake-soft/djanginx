@@ -30,7 +30,7 @@ jobs:
         env:
           VERSION: ${GITHUB_REF}
           HASH: ${GITHUB_SHA}
-        run: echo "Build and push $VERSION from ${{ HASH }}"
+        run: echo "Build and push $VERSION from ${{ env.HASH }}"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
