@@ -10,6 +10,9 @@ jobs:
   push_latest:
     name: Push latest Docker image to Docker Hub
     runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.GITHUB_REF }}
+      HASH: ${{ github.GITHUB_SHA }}
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -32,7 +35,7 @@ jobs:
           context: .
           push: true
           build-args: |
-            VERSION="${{ github.GITHUB_REF }}"
-            HASH="${{ github.GITHUB_SHA }}"
+            VERSION=$VERSION
+            HASH=$HASH
           labels: ${{ steps.meta.outputs.labels }}
           tags: snakesoft/djanginx:latest
