@@ -26,13 +26,13 @@ jobs:
           images: snakesoft/djanginx
 
       - name: Set Major
-        run: echo MAJOR=${github.GITHUB_REF_NAME%%.*} >> $GITHUB_ENV
+        run: echo MAJOR=${{ github.GITHUB_REF_NAME%%.* }} >> $GITHUB_ENV
 
       - name: Set Major
-        run: echo MAJOR=${github.GITHUB_REF_NAME%.*} >> $GITHUB_ENV
+        run: echo MAJOR=${{ github.GITHUB_REF_NAME%.* }} >> $GITHUB_ENV
 
       - name: Set Micro
-        run: echo MICRO=${github.GITHUB_REF_NAME} >> $GITHUB_ENV
+        run: echo MICRO=${{ github.GITHUB_REF_NAME }} >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
