@@ -26,13 +26,13 @@ jobs:
           images: snakesoft/djanginx
 
       - name: Set MAJOR
-        run: echo "MAJOR=${GITHUB_REF%%.*}" >> $GITHUB_ENV
+        run: echo "MAJOR=${GITHUB_REF_NAME%%.*}" >> $GITHUB_ENV
 
       - name: Set MINOR
-        run: echo "MINOR=${GITHUB_REF%.*}" >> $GITHUB_ENV
+        run: echo "MINOR=${GITHUB_REF_NAME%.*}" >> $GITHUB_ENV
 
       - name: Set MICRO
-        run: echo "MICRO=${GITHUB_REF}" >> $GITHUB_ENV
+        run: echo "MICRO=${GITHUB_REF_NAME}" >> $GITHUB_ENV
 
       - name: Set HASH
         run: echo "HASH=${GITHUB_SHA}" >> $GITHUB_ENV
