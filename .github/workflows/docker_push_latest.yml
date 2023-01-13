@@ -29,19 +29,18 @@ jobs:
       - name: Foo
         env:
           HASH: ${GITHUB_SHA:0:5}
-        run: echo "${GITHUB_SHA:0:5} blablubb $HASH / ${{ env.HASH }}"
+        run: echo "${GITHUB_SHA:0:5} blablubb ${{ env.HASH }}"
 
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         env:
           VERSION: latest
-          HASH: echo ${GITHUB_SHA}
+          HASH: ${GITHUB_SHA:0:5}
         with:
-          context: .
           push: true
           build-args: |
             VERSION=${{ env.VERSION }}
             HASH=${{ env.HASH }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: snakesoft/djanginx:latest
+          tags: snakesoft/djanginx:${{ env.HASH }}
