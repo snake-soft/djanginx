@@ -31,8 +31,6 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        env:
-          HASH: echo "`${GITHUB_SHA:0:5}`"
         with:
           context: .
           push: true
