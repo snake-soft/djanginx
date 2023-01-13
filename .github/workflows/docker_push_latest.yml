@@ -28,8 +28,8 @@ jobs:
 
       - name: Foo
         env:
-          VERSION: ${{ github.GITHUB_REF }}
-          HASH: ${{ github.GITHUB_SHA }}
+          VERSION: echo "${{ github.GITHUB_REF }}"
+          HASH: echo "${{ github.GITHUB_SHA }}"
         run: echo "Create $VERSION from ${{ env.HASH }}"
 
       - name: Build and push Docker image
