@@ -28,8 +28,8 @@ jobs:
 
       - name: "Say Hello Mona it's Monday"
         env:
-          VERSION: ${{ github.GITHUB_REF }}
-          HASH: ${{ github.GITHUB_SHA }}
+          VERSION: $GITHUB_REF
+          HASH: $GITHUB_SHA
         run: echo "Build and push $VERSION from ${{ github.GITHUB_SHA }}"
 
       - name: Build and push Docker image
