@@ -34,14 +34,11 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        env:
-          VERSION: latest
-          HASH: echo "${GITHUB_SHA:0:5}"
         with:
           context: .
           push: true
           build-args: |
-            VERSION=${{ env.VERSION }}
-            HASH=${{ env.HASH }}
+            VERSION=latest
+            HASH=${{ env.GITHUB_SHA }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: echo "snakesoft/djanginx:${{ env.HASH }}"
+          tags: echo "snakesoft/djanginx:${{ env.GITHUB_SHA }}"
