@@ -27,7 +27,7 @@ jobs:
           images: snakesoft/djanginx
 
       - name: Foo1
-        run: echo "${github.GITHUB_SHA}"
+        run: echo "${GITHUB_SHA}"
 
       - name: Foo2
         run: echo "${{ github.GITHUB_SHA }}"
