@@ -26,11 +26,8 @@ jobs:
         with:
           images: snakesoft/djanginx
 
-      - name: Foo
-        env:
-          HASH: `${GITHUB_SHA:0:5}`
-        run: echo "$HASH blablubb ${{ env.HASH }}"
-
+      - name: Set hash env
+        run: echo "HASH=${GITHUB_SHA:0:5}" >> $GITHUB_ENV
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
