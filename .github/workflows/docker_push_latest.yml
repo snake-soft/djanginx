@@ -38,9 +38,10 @@ jobs:
           VERSION: latest
           HASH: ${GITHUB_SHA:0:5}
         with:
+          context: .
           push: true
           build-args: |
             VERSION=${{ env.VERSION }}
             HASH=${{ env.HASH }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: snakesoft/djanginx:${{ env.HASH }}
+          tags: snakesoft/djanginx:`${{ env.HASH }}`
