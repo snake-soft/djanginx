@@ -26,6 +26,12 @@ jobs:
         with:
           images: snakesoft/djanginx
 
+      - name: Foo
+        env:
+          VERSION: ${{ github.GITHUB_REF }}
+          HASH: ${{ github.GITHUB_SHA }}
+        run: echo "Create $VERSION from ${{ env.HASH }}"
+
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         env:
