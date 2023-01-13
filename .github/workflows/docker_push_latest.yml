@@ -31,7 +31,7 @@ jobs:
           context: .
           push: true
           build-args: |
-            VERSION=${{ github.GITHUB_REF_NAME }}
-            HASH=${{ github.GITHUB_SHA }}
+            VERSION=${{ GITHUB_REF_NAME }}
+            HASH=${{ GITHUB_SHA }}
           labels: ${{ steps.meta.outputs.labels }}
           tags: snakesoft/djanginx:latest
