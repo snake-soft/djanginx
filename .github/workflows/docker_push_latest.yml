@@ -28,7 +28,7 @@ jobs:
 
       - name: Foo
         env:
-          HASH: echo "`${GITHUB_SHA:0:5}`"
+          HASH: `${GITHUB_SHA:0:5}`
         run: echo "$HASH blablubb ${{ env.HASH }}"
 
 
