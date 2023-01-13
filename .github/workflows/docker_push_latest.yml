@@ -11,8 +11,8 @@ jobs:
     name: Push latest Docker image to Docker Hub
     runs-on: ubuntu-latest
     env:
-      VERSION=${{ github.GITHUB_REF_NAME }}
-      HASH=${{ github.GITHUB_SHA }}
+      VERSION: ${{ github.GITHUB_REF_NAME }}
+      HASH: ${{ github.GITHUB_SHA }}
     
     steps:
       - name: Check out the repo
