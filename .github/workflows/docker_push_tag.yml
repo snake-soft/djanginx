@@ -44,8 +44,8 @@ jobs:
           push: true
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            VERSION=${{ GITHUB_REF }}
-            HASH=${{ GITHUB_SHA }}
+            VERSION=${{ env.MICRO }}
+            HASH=${{ env.hash }}
           tags: |
             snakesoft/djanginx:${{ env.MAJOR }}
             snakesoft/djanginx:${{ env.MINOR }}
