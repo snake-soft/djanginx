@@ -25,12 +25,20 @@ jobs:
         with:
           images: snakesoft/djanginx
 
+      - name: Set MAJOR
+        run: echo "MAJOR=${GITHUB_REF%%.*}" >> $GITHUB_ENV
+
+      - name: Set MINOR
+        run: echo "MINOR=${GITHUB_REF%.*}" >> $GITHUB_ENV
+
+      - name: Set MICRO
+        run: echo "MICRO=${GITHUB_REF}" >> $GITHUB_ENV
+
+      - name: Set HASH
+        run: echo "HASH=${GITHUB_SHA}" >> $GITHUB_ENV
+
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        env:
-          MAJOR: ${github.GITHUB_REF%%.*}
-          MINOR: ${github.GITHUB_REF%.*}
-          MICRO: ${github.GITHUB_REF}
         with:
           context: .
           push: true
@@ -39,6 +47,6 @@ jobs:
             VERSION=${{ GITHUB_REF }}
             HASH=${{ GITHUB_SHA }}
           tags: |
-            snakesoft/djanginx:${{ MAJOR }}
-            snakesoft/djanginx:${{ MINOR }}
-            snakesoft/djanginx:${{ MICRO }}
+            snakesoft/djanginx:${{ env.MAJOR }}
+            snakesoft/djanginx:${{ env.MINOR }}
+            snakesoft/djanginx:${{ env.MICRO }}

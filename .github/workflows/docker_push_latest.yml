@@ -26,9 +26,6 @@ jobs:
         with:
           images: snakesoft/djanginx
 
-      - name: Set VERSION
-        run: echo "VERSION=latest" >> $GITHUB_ENV
-
       - name: Set HASH
         run: echo "HASH=${GITHUB_SHA}" >> $GITHUB_ENV
 
@@ -38,7 +35,7 @@ jobs:
           context: .
           push: true
           build-args: |
-            VERSION=${{ env.VERSION }}
+            VERSION=latest
             HASH=${{ env.HASH }}
           labels: ${{ steps.meta.outputs.labels }}
-          tags: snakesoft/djanginx:${{ env.VERSION }}
+          tags: snakesoft/djanginx:latest
