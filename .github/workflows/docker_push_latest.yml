@@ -28,7 +28,7 @@ jobs:
 
       - name: Foo
         env:
-          VERSION: echo "${ GITHUB_REF }"
+          VERSION: echo "${{ GITHUB_REF }}"
           HASH: ${ GITHUB_SHA }
         run: echo "Create $VERSION from ${{ env.HASH }}"
 
