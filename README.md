@@ -22,29 +22,27 @@ The main server configuration listens only to the defined domain to avoid django
 # Map your Django project
 
 ```
-django:
+django_1:
   volumes:
     - django_media:/app/media/:rw
     - django_static:/app/static_root/:rw
   command: "python3 -m daphne -b 0.0.0.0 -p 8000 config.asgi:application"
-  networks:
-    <<: *networks
-    site_1:
-      aliases:
-        - site
 
-web:
+web_1:
   image: docker.io/snakesoft/djanginx:latest
   ports:
-    - "${SITE_1_PORT:-8001}:80"
-  environment:
-    - LISTEN_DOMAIN=yourdomain.com
+    - "80:80"
   volumes:
     - django_media:/app/media/:ro
     - django_static:/app/static_root/:ro
-  networks:
-    - site_1
+  environment:
+    LISTEN_DOMAIN: yourdomain.com
+    SITE_HOSTNAME: django_1
+```
 
-networks:
-  site_1:
+Instead of "SITE_HOSTNAME: django_1" you can use:
+
+```
+  links:
+    - site_1:site
 ```
