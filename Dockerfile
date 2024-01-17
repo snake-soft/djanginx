@@ -1,4 +1,4 @@
-FROM nginx:1.23.3
+FROM nginx:1.25.3
 
 COPY ./nginx/templates/default.conf.template /etc/nginx/templates/
 
